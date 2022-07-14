@@ -41,7 +41,7 @@ import TileSelectionResult from "./TileSelectionResult.js";
  *        this property will not affect visual quality.
  */
 function QuadtreePrimitive(options) {
-  debugger;
+  //debugger;
   //>>includeStart('debug', pragmas.debug);
   if (!defined(options) || !defined(options.tileProvider)) {
     throw new DeveloperError("options.tileProvider is required.");
@@ -86,16 +86,17 @@ function QuadtreePrimitive(options) {
 
 // 在新原型上添加同名push
   newPrototype.push = function(...args) {
-    if(window._dev){
-      debugger;
-    }
+    //if(window._dev){
+      //debugger;
+   // }
 
     // 语义化this
     let curArr = this;
     console.log("使用了push");
     // 最后还是会执行原始的push
     return Array.prototype.push.call(curArr, ...args);
-  };
+  };// 在新原型上添加同名push
+
   this._tileLoadQueueHigh.__proto__ = newPrototype;
 
   this._tileLoadQueueMedium = []; // medium priority tiles are being rendered
@@ -380,6 +381,7 @@ QuadtreePrimitive.prototype.render = function (frameState) {
   var tileProvider = this._tileProvider;
 
   if (passes.render) {
+    //debugger;
     tileProvider.beginUpdate(frameState);
 
     selectTilesForRendering(this, frameState);
@@ -1206,8 +1208,10 @@ function visitIfVisible(
   ancestorMeetsSse,
   traversalDetails
 ) {
+  //debugger;
+  let result =tileProvider.computeTileVisibility(tile, frameState, occluders);
   if (
-    tileProvider.computeTileVisibility(tile, frameState, occluders) !==
+      result!==
     Visibility.NONE
   ) {
     return visitTile(

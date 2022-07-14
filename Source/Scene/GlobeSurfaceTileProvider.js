@@ -285,6 +285,7 @@ Object.defineProperties(GlobeSurfaceTileProvider.prototype, {
    */
   terrainProvider: {
     get: function () {
+      //debugger;
       return this._terrainProvider;
     },
     set: function (terrainProvider) {
@@ -1186,7 +1187,6 @@ GlobeSurfaceTileProvider.prototype.computeDistanceToTile = function (
       tileBoundingRegion.maximumHeight = max;
     }
   }
-
   var result = tileBoundingRegion.distanceToCamera(frameState);
 
   tileBoundingRegion.minimumHeight = min;

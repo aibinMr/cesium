@@ -1156,6 +1156,7 @@ Object.defineProperties(Scene.prototype, {
    */
   terrainProvider: {
     get: function () {
+      //debugger;
       if (!defined(this.globe)) {
         return undefined;
       }
@@ -1163,6 +1164,7 @@ Object.defineProperties(Scene.prototype, {
       return this.globe.terrainProvider;
     },
     set: function (terrainProvider) {
+      //debugger;
       if (defined(this.globe)) {
         this.globe.terrainProvider = terrainProvider;
       }
@@ -2299,19 +2301,19 @@ function executeCommands(scene, passState) {
   if (!picking) {
     var skyBoxCommand = environmentState.skyBoxCommand;
     if (defined(skyBoxCommand)) {
-      executeCommand(skyBoxCommand, scene, context, passState);
+      //executeCommand(skyBoxCommand, scene, context, passState);
     }
 
-    if (environmentState.isSkyAtmosphereVisible) {
+/*    if (environmentState.isSkyAtmosphereVisible) {
       executeCommand(
         environmentState.skyAtmosphereCommand,
         scene,
         context,
         passState
       );
-    }
+    }*/
 
-    if (environmentState.isSunVisible) {
+    /*if (environmentState.isSunVisible) {
       environmentState.sunDrawCommand.execute(context, passState);
       if (scene.sunBloom && !useWebVR) {
         var framebuffer;
@@ -2331,7 +2333,7 @@ function executeCommands(scene, passState) {
     // Moon can be seen through the atmosphere, since the sun is rendered after the atmosphere.
     if (environmentState.isMoonVisible) {
       environmentState.moonCommand.execute(context, passState);
-    }
+    }*/
   }
 
   // Determine how translucent surfaces will be handled.
@@ -2448,8 +2450,17 @@ function executeCommands(scene, passState) {
         passState
       );
     } else {
+
+      if(length === 12 && !window.tempTile){
+      window.tempTile =   commands[0];
+      }
       for (j = 0; j < length; ++j) {
-        executeCommand(commands[j], scene, context, passState);
+        if( window.tempTile){
+          executeCommand(tempTile, scene, context, passState);
+          break;
+        }else{
+          executeCommand(commands[j], scene, context, passState);
+        }
       }
     }
 
@@ -2769,12 +2780,13 @@ function executeComputeCommands(scene) {
 
   var sunComputeCommand = scene._environmentState.sunComputeCommand;
   if (defined(sunComputeCommand)) {
-    sunComputeCommand.execute(scene._computeEngine);
+    //sunComputeCommand.execute(scene._computeEngine);
   }
 
   var commandList = scene._computeCommandList;
   var length = commandList.length;
   for (var i = 0; i < length; ++i) {
+    // 创建绘制指令
     commandList[i].execute(scene._computeEngine);
   }
 }
@@ -3231,7 +3243,7 @@ Scene.prototype.updateEnvironment = function () {
       environmentState.skyAtmosphereCommand = undefined;
     }
 
-    environmentState.skyBoxCommand = defined(this.skyBox)
+   /* environmentState.skyBoxCommand = defined(this.skyBox)
       ? this.skyBox.update(frameState, this._hdr)
       : undefined;
     var sunCommands = defined(this.sun)
@@ -3245,7 +3257,7 @@ Scene.prototype.updateEnvironment = function () {
       : undefined;
     environmentState.moonCommand = defined(this.moon)
       ? this.moon.update(frameState)
-      : undefined;
+      : undefined;*/
   }
 
   var clearGlobeDepth = (environmentState.clearGlobeDepth =
@@ -3260,7 +3272,7 @@ Scene.prototype.updateEnvironment = function () {
     // Update the depth plane that is rendered in 3D when the primitives are
     // not depth tested against terrain so primitives on the backface
     // of the globe are not picked.
-    this._depthPlane.update(frameState);
+    //this._depthPlane.update(frameState);
   }
 
   environmentState.renderTranslucentDepthForPick = false;
@@ -3386,12 +3398,12 @@ function updateShadowMaps(scene) {
 
 function updateAndRenderPrimitives(scene) {
   var frameState = scene._frameState;
-  /*
+
     scene._groundPrimitives.update(frameState);
     scene._primitives.update(frameState);
-
-    updateDebugFrustumPlanes(scene);
-    updateShadowMaps(scene);*/
+  /*
+     updateDebugFrustumPlanes(scene);
+     updateShadowMaps(scene);*/
 
   if (scene._globe) {
     scene._globe.render(frameState);

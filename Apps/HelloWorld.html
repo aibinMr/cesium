@@ -28,7 +28,7 @@
   <body>
     <div id="cesiumContainer"></div>
     <script type="module">
-      import {Viewer,createWorldTerrain} from '../Source/Cesium.js'
+      import {Viewer} from '../Source/Cesium.js'
       var viewer = new  Viewer("cesiumContainer", {
         geocoder: false,
         homeButton: false,
@@ -41,8 +41,7 @@
         vrButton: false,
         shadows: true, //影子
         infoBox: false,
-        skyAtmosphere:false,
-        terrainProvider :createWorldTerrain(),
+        skyAtmosphere:false
       });
       window.viewer=viewer;
     </script>

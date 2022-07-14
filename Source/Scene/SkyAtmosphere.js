@@ -210,7 +210,7 @@ SkyAtmosphere.prototype.update = function (frameState, globe) {
   var command = this._command;
 
   if (!defined(command.vertexArray)) {
-    debugger;
+    //debugger;
     var geometry = EllipsoidGeometry.createGeometry(
       new EllipsoidGeometry({
         radii: new Cartesian3(1.0, 1.0, 1.0),

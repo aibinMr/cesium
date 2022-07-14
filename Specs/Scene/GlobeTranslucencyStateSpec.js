@@ -59,6 +59,7 @@ function createShaderProgram(colorString) {
 }
 
 function createDrawCommand() {
+  debugger;
   var uniformMap = {};
   var shaderProgram = createShaderProgram("0.0");
 
@@ -599,7 +600,7 @@ describe("Scene/GlobeTranslucencyState", function () {
       derivedCommands.pickFrontFaceCommand,
     ]);
   });
-
+debugger;
   it("executes globe commands", function () {
     var context = frameState.context;
     var passState = new PassState(context);

@@ -56,10 +56,6 @@ function Buffer(options) {
   Check.typeOf.number.greaterThan("sizeInBytes", sizeInBytes, 0);
   //>>includeEnd('debug');
 
-  if(window._dev){
-    debugger;
-  }
-
   var buffer = gl.createBuffer();
   gl.bindBuffer(bufferTarget, buffer);
   gl.bufferData(bufferTarget, hasArray ? typedArray : sizeInBytes, usage);

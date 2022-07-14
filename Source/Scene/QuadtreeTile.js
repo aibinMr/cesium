@@ -18,6 +18,7 @@ import TileSelectionResult from "./TileSelectionResult.js";
  * @param {QuadtreeTile} [options.parent] This tile's parent, or undefined if this is a root tile.
  */
 function QuadtreeTile(options) {
+  //debugger;
   //>>includeStart('debug', pragmas.debug);
   if (!defined(options)) {
     throw new DeveloperError("options is required.");
@@ -230,8 +231,6 @@ Object.defineProperties(QuadtreeTile.prototype, {
    */
   level: {
     get: function () {
-      /**/
-      console.log('get level');
       return this._level;
     },
   },
@@ -255,7 +254,6 @@ Object.defineProperties(QuadtreeTile.prototype, {
    */
   rectangle: {
     get: function () {
-      console.log('get rectangle');
       return this._rectangle;
     },
   },
@@ -283,7 +281,7 @@ Object.defineProperties(QuadtreeTile.prototype, {
    */
   southwestChild: {
     get: function () {
-      debugger;
+      //debugger;
       if (!defined(this._southwestChild)) {
         this._southwestChild = new QuadtreeTile({
           tilingScheme: this.tilingScheme,
@@ -304,6 +302,7 @@ Object.defineProperties(QuadtreeTile.prototype, {
    */
   southeastChild: {
     get: function () {
+      //debugger;
       if (!defined(this._southeastChild)) {
         this._southeastChild = new QuadtreeTile({
           tilingScheme: this.tilingScheme,
@@ -324,6 +323,7 @@ Object.defineProperties(QuadtreeTile.prototype, {
    */
   northwestChild: {
     get: function () {
+      //debugger;
       if (!defined(this._northwestChild)) {
         this._northwestChild = new QuadtreeTile({
           tilingScheme: this.tilingScheme,
@@ -344,6 +344,7 @@ Object.defineProperties(QuadtreeTile.prototype, {
    */
   northeastChild: {
     get: function () {
+      //debugger;
       if (!defined(this._northeastChild)) {
         this._northeastChild = new QuadtreeTile({
           tilingScheme: this.tilingScheme,

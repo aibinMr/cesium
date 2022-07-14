@@ -181,7 +181,7 @@ function computeBox(tileBB, rectangle, ellipsoid) {
     cartographicScratch,
     westernMidpointScratch
   );
-
+  console.log('westernMidpointCartesian:'+westernMidpointCartesian.z);
   // Compute the normal of the plane on the western edge of the tile.
   var westNormal = Cartesian3.cross(
     westernMidpointCartesian,
