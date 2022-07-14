@@ -1439,7 +1439,7 @@ Context.prototype.getViewportQuadVertexArray = function () {
       indices: new Uint16Array([0, 1, 2, 0, 2, 3]),
       primitiveType: PrimitiveType.TRIANGLES,
     });
-
+    debugger;
     vertexArray = VertexArray.fromGeometry({
       context: this,
       geometry: geometry,

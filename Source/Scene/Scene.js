@@ -2301,7 +2301,7 @@ function executeCommands(scene, passState) {
   if (!picking) {
     var skyBoxCommand = environmentState.skyBoxCommand;
     if (defined(skyBoxCommand)) {
-      //executeCommand(skyBoxCommand, scene, context, passState);
+      executeCommand(skyBoxCommand, scene, context, passState);
     }
 
 /*    if (environmentState.isSkyAtmosphereVisible) {
